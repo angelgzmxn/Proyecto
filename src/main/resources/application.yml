@@ -1,0 +1,28 @@
+spring:
+    application:
+        name: MyFirstProject
+    datasource:
+        url: jdbc:sqlite:file:task_server_kotlin?mode=memory&cache=shared
+        driver-class-name: org.sqlite.JDBC
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.community.dialect.SQLiteDialect
+                format_sql: true
+
+app:
+    jwt:
+        secret: ${JWT_SECRET:dev-secret-change-me}
+        expiration-minutes: ${JWT_EXPIRATION_MINUTES:30}
+    twilio:
+        account-sid: ${TWILIO_ACCOUNT_SID:changeme}
+        auth-token: ${TWILIO_AUTH_TOKEN:changeme}
+        whatsapp-from: ${TWILIO_WHATSAPP_FROM:+14155238886}
+    scheduler:
+        fixed-rate-ms: ${REMINDER_SCHEDULER_RATE_MS:60000}
+
+server:
+    port: 9090
